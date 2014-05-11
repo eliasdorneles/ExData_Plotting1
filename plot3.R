@@ -19,14 +19,9 @@ plot(times, raw_data$Sub_metering_1, type='n',
 columns <- c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3")
 columns_colors <- c('black', 'red', 'blue')
 
-#mapply(function(column, color){
-#    lines(times, raw_data[column], col=color)
-#}, columns, columns_colors)
-lines(times, raw_data$Sub_metering_1, col='black')
-lines(times, raw_data$Sub_metering_2, col='red')
-lines(times, raw_data$Sub_metering_3, col='blue')
-legend("topright",
-       legend=columns,
-       col=columns_colors, lwd=1)
+mapply(function(column, color){
+    lines(times, raw_data[[column]], col=color)
+}, columns, columns_colors)
+legend("topright", legend=columns, col=columns_colors, lwd=1)
 
 dev.off()
